@@ -1,0 +1,169 @@
+October 19th:
+
+Matteo:
+-Made audio load much easier with audio::play_sound() by changing the definition of Macroquad in cargo.toml
+-Shapes continuously move with held button, different controls for each shape
+-Audio can be muted lol not really necessary just for fun
+-Added code I found online to the end of Cargo.toml that makes everything load way faster (No idea how it works lol)
+-Added background image last minute, haven't messed around with the parameters at all though
+
+
+October 20th:
+
+Sylvie:
+-Restructured code a bit for readability and consistency
+-Made file paths relative so they don't only work on Matteo's computer (lol)
+-Used delta_time when calculating player movement so it doesn't depend on framerate
+-Created Car struct to hold data for each player (position, size, speed, etc)
+-Made cars circles so collision detection & physics will be much easier & better later on
+
+
+October 26th:
+
+Matteo:
+I wanted to work on this all week :( I was lazy
+-Fixed clamp to work for left and upper bounds (fixed mins)
+-Implemented a collision check for our cars
+    -On collision, colliding car is bounced back in the opposite direction, without rotating the texture
+    -Problem! - If you time it right, you can get one circle inside of the other, and from there all hell breaks loose.
+        -How can we stop the circle from entering the other circle, even if its just from the momentum of driving forward?
+-Made reset function
+-Loaded car sprite, for car2 we can use the same sprite and in draw_texture_ex we can change COLOR: to something new
+-Added turning for car sprite in form of rotation(in radians fml)
+    -I just want our car to face the direction we drive, right now its stuck in one of 4 directions, but can't go diagonal even if the circle doesn
+-This all will probably change, I just wanted to mess around and test some stuff out
+
+
+October 27th:
+
+Matteo:
+-Added prototype for friction/acceleration
+    -This method for friction (kind of) addresses the collision problem from last update, it can still happen though
+-I want the car to slow to a halt when you let go of the keys, couldn't get that to work, but got the check for no keys pressed working
+-I used car1.vx for car1's acceleration, I think this isn't what you wanted to do with that variable Sylvie so I sorry and oops
+
+
+October 28th:
+
+Sylvie:
+-Changed movement:
+    -Cars now have a direction
+    -Left/right keys turn the car
+    -Up key moves the car in that direction, down key moves opposite that direction
+-Added a little head to visualize the direciton the car is facing
+-Modified acceleration/friction to work with this system
+-Need to figure out how to implement a max speed with this system
+-Collisions also don't work now, but we can work on that after we have movement working how we want it
+-Changed changelog format to support both of us making changes in the same day
+
+Sylvie:
+-Fixed issues with delta_time
+    -I didn't understand how it worked so I multiplied variables by it that I shouldn't have
+-Added max speed, it worked once I fixed the delta_time issue
+-Next we should work together to tweak acceleration, friction, max speed to make it feel right for our game
+-Also the car currently drifts, we should decide if we don't want it to and if not implement that
+-Then we can work on collision :D
+
+October 29th:
+
+Sylvie:
+-Fixed the cars sticking to the screen borders
+    -Now either the x or y velocity is reset to 0 if you hit a border
+
+October 30th:
+
+Sylvie & Matteo:
+-Made the default movement not drifting, we can always add a button that makes you drift while holding it down
+-Reformatted code to be more efficient
+    -Now the code for each car's movement is only written out once
+
+November:
+
+Sylvie changed the turning and movement system so it works way better.
+
+December 3rd:
+
+Sylvie & Matteo:
+-Added collision between cars and functionality for track collision
+
+December 4th:
+
+Sylvie:
+-Added more track and walls
+
+December 6th:
+
+Sylvie:
+-Finished basic outline of track with walls
+-Added one curved section that we'll need to add collision for
+-Also fixed various clippy warnings
+-Might add some more shortcuts
+-There are some boring sections of the track (bottom left) but I thought we could add obstacles there
+
+December 9th
+
+Sylvie & Matteo:
+-Added animated sprites for the cars
+-Added two separate sets of sprites, one for left facing and one for right facing
+-It looks really good :D
+
+December 10th
+
+Matteo:
+-Finished collision, arc bounces and collides on inner and outer borders.
+-Added background gif to replace green texture, was thinking this could be like rainbow road lol
+-Tried to delete duplicate gif frames by look, but it still looks a little rough.
+-Changed colors of roads, looks kinda tacky I think we need track textures
+IDK WHY THIS TOOK FOREVER AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+Gif:
+https://tenor.com/view/twinkle-little-star-night-sky-gif-13048017 
+
+
+December 11th:
+
+Matteo:
+-Made and added pause menu 
+-Made separate function to pause the game, drawing all graphics underneath
+PROBLEM: Sprite counter updates more slowly in the function, causing the paused state to look slower
+todo: fix problem
+todo: get link to pause image for credit as well as chain chomp gif
+
+December 16th:
+
+Sylvie & Matteo:
+-Added track sprites, still need sprite for curved track
+-Added semi-functional main menu with sprites
+
+December 17th:
+
+Matteo:
+- Finished main menu, exit, and start functionality
+- If you look at the main menu loop for when Start is pressed, you'll see a variable "controls_timer"
+    - Since moving to the controls screen and starting the game are the same button, if you click for too long
+      it will automatically trigger the second if statement. So I added a variable that goes up by one and makes
+      sure you don't accidentally skip that
+
+- Why should u care? I was thinking for our race countdown timer, we could do a similar loop and say countdown = 0,
+each iteration of the loop adds .01 to countdown and if countdown % 3 is a whole number (3, 2, 1, 0), draw text displaying countdown,
+and if countdown % 3 = 0 start the race.
+
+- I am too tired to do this rn lmfao maybe later though
+
+-We still have to fix December 11 problems
+
+December 17th (again)
+
+Matteo:
+- Finished and added a countdown to start each race
+- Laps are counted and after 3 laps you win with a big screen
+    - Laps cannot be cheesed and you must update your ability to add a lap by driving through the block after the arc.
+- Added new font and various texts around, various textures for goaltape and countdown and others
+
+-Still haven't finished December 11 problems
+
+December 18th:
+
+Matteo & Sylvie:
+-other changes lol gonna add them here later
+-Matteo: FINISH THE CONTROL SPRITES OR WHATEVER 
